@@ -88,23 +88,23 @@ describe('Game', function() {
     expect(newGame.board.spaces[0][2].markedBy).to.equal(clare.mark);
   });
 
-  it("Checks if the current player has won", function() {
+  it("checks if the current player has won", function() {
     var newGame = new Game();
     var clare = newGame.player1;
     newGame.takeTurn(clare, 0, 0);
     expect(clare.hasWon).to.equal(false);
     newGame.takeTurn(clare, 1, 1);
     newGame.takeTurn(clare, 2, 2);
-    // 
-    // newGame.board.spaces[1][1].markBy(clare);
-    // newGame.board.spaces[2][2].markBy(clare);
     expect(clare.hasWon).to.equal(true);
   });
 
-  // var newGame = new Game()
-  // var clare = newGame.player1;
-  // var cory = newGame.player2;
-  // newGame.play()
+  // it("checks if the game is played and clare wins", function() {
+  //   var newGame = new Game()
+  //   var clare = newGame.player1;
+  //   var cory = newGame.player2;
+  //   newGame.play();
+  //   expect(clare.hasWon).to.equal(true);
+  // });
 });
 
 

@@ -15,6 +15,7 @@ var Space = function(x, y) {
 // }
 
 // TODO: change parameter to just the mark string
+
 Space.prototype.markBy = function(player) {
   this.markedBy = player.mark;
 };
@@ -51,20 +52,23 @@ Game.prototype.whoseTurn = function() {
   };
 };
 
-
-
-Game.prototype.play = function(space) {
-  for (this.turnCount = 1; this.turnCount<=9; this.turnCount++) {
-    this.takeTurn(this.whoseTurn, space);
-  };
-};
+// Game.prototype.play = function() {
+//   var moveList = [[0,0], [1,2], [1,1], [2,1], [2,2]]; //add user input jquery
+//   for (this.turnCount = 1; this.turnCount<=9; this.turnCount++) {
+//     // debugger;
+//     var move = moveList[this.turnCount - 1];
+//     this.takeTurn(this.whoseTurn, move[0], move[1]);
+//     debugger;
+//     if (this.whoseTurn.hasWon) {
+//       break;
+//     };
+//   };
+// };
 
 Game.prototype.takeTurn = function(player, x, y) {
-  var currentSpace = this.board.spaces[x][y];
-  currentSpace.markBy(player);
+  // debugger;
+  this.board.spaces[x][y].markBy(player);
   this.board.winCondition(player);
-
-  return currentSpace.markedBy;
 };
 
 Board.prototype.winCondition = function(player) {
@@ -82,7 +86,9 @@ Board.prototype.winCondition = function(player) {
   };
 };
 
-
+// document.ready
+//   jquery blah blah
+//   game = new Game
 
 
 
