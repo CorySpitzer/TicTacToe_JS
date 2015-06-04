@@ -1,3 +1,4 @@
+
 #game li {
   float: left;
   padding: 10px;
@@ -9,9 +10,9 @@
   line-height: 40px;
   font-size: 40px;
   color: #ccc;
+  border: 2px solid black;
+  width: 50px;
 }
-
-
 
 #game {
   float:left; padding:0; clear:both

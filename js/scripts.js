@@ -47,6 +47,7 @@ Game.prototype.takeTurn = function(player, x, y) {
   // debugger;
   this.board.spaces[x][y].markBy(player);
   this.board.winCondition(player);
+  this.turnCount++;
 };
 
 Board.prototype.winCondition = function(player) {
@@ -65,5 +66,13 @@ Board.prototype.winCondition = function(player) {
 };
 
 $(function(){
+  var newGame = new Game();
+  $('li#one').click(function() {
+    alert('clicked!');
+    var mark = newGame.whoseTurn().mark;
+    alert(mark);
+    newGame.takeTurn(newGame.whoseTurn(), 0, 0);
+    $('#one').text(mark);
+  });
 
 });
