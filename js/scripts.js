@@ -39,22 +39,23 @@ Board.prototype.find = function(x,y) {
 
 // Yikes, we dont even know about this .turn
 Board.prototype.turn = function(player) {
-    if (turnCount > 9) {
-      alert("Game ends in a tie.");
-    } else if (turnCount % 2 === 0) {
-      console.log("Player X's turn");
+  if (turnCount > 9) {
+    alert("Game ends in a tie.");
+  } else if (turnCount % 2 === 0) {
+    console.log("Player X's turn");
 
-    //  player marks something
-    //   SPACEID.mark_by(player)
-      if (player.winCondition){
-        return player.mark + " has won!"
+  //  player marks something
+  //   SPACEID.mark_by(player)
+    if (player.winCondition){
+      return player.mark + " has won!";
 
-    } else if {
+    } else {
       console.log("Player O's turn");
       board.turn(player2);
-  }
-  space.mark_by(player)
-}
+    };
+  };
+  space.mark_by(player);
+};
 
 Board.prototype.winCondition = function(player) {
   if (((this.spaces[1][1].markedBy === player) && (this.spaces[2][1].markedBy === player) && (this.spaces[3][1].markedBy === player))
