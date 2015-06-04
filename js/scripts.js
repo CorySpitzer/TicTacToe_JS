@@ -67,12 +67,27 @@ Board.prototype.winCondition = function(player) {
 
 $(function(){
   var newGame = new Game();
-  $('li#one').click(function() {
+  $('#00').click(function() {
     alert('clicked!');
     var mark = newGame.whoseTurn().mark;
     alert(mark);
     newGame.takeTurn(newGame.whoseTurn(), 0, 0);
-    $('#one').text(mark);
+    $('#00').text(mark);
   });
 
+//the problem is closures: they behave differently
+  // for (var x=0; x<3; x++) {
+  //   for (var y=0; y<3; y++) {
+  //     var selector = '#' + x.toString() + y.toString();
+  //     // $(selector).last().click(function() {
+  //     //   $(this).css('background-color', 'red');
+  //     // });
+  //     $(selector).last().click(function() {
+  //       debugger;
+  //       console.log("IN CLICK x: " + x + ", y: " + y);
+  //       // newGame.takeTurn(newGame.whoseTurn(), x, y);
+  //       // $(selector).text('z');
+  //     });
+  //   };
+  // };
 });
