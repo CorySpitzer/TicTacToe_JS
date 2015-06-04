@@ -24,7 +24,7 @@ describe('Space', function() {
   it("lets a player mark a space", function() {
     var testPlayer = new Player("X");
     var testSpace = new Space(1, 2);
-    testSpace.mark_by(testPlayer);
+    testSpace.markBy(testPlayer);
     expect(testSpace.markedBy).to.equal(testPlayer.mark);
   });
 
@@ -40,9 +40,9 @@ describe('Board', function() {
   // it("determines if a player has won", function() { Testing winCondition
   //   var testBoard = new Board();
   //   var testPlayer = new Player("X");
-  //   testBoard.find(1,1).mark_by(testPlayer);
-  //   testBoard.find(1,2).mark_by(testPlayer);
-  //   testBoard.find(1,3).mark_by(testPlayer);
+  //   testBoard.find(1,1).markBy(testPlayer);
+  //   testBoard.find(1,2).markBy(testPlayer);
+  //   testBoard.find(1,3).markBy(testPlayer);
   //   expect(testBoard.turn(testPlayer)).to.equal("X wins!");
   // });
 });
@@ -81,6 +81,12 @@ describe('Game', function() {
     expect(newGame.whoseTurn()).to.equal(cory);
   });
 
+  it("marks a space in a turn", function() {
+    var newGame = new Game()
+    var clare = newGame.player1;
+    newGame.takeTurn(clare, 0, 2);
+    expect(newGame.board.spaces[0][2].markedBy).to.equal(clare.mark);
+  });
 
   // var newGame = new Game()
   // var clare = newGame.player1;

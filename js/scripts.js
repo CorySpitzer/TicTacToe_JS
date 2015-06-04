@@ -14,7 +14,7 @@ var Space = function(x, y) {
 //   return [this.xCoordinate, this.yCoordinate];
 // }
 
-Space.prototype.mark_by = function(player) {
+Space.prototype.markBy = function(player) {
   this.markedBy = player.mark;
 };
 
@@ -30,9 +30,9 @@ var Board = function() {
   };
 };
 
-Board.prototype.find = function(x,y) {
-  return this.spaces[x][y];
-};
+// Board.prototype.find = function(x,y) {
+//   return this.spaces[x][y];
+// };
 
 var Game = function() {
   var board = new Board();
@@ -50,19 +50,19 @@ Game.prototype.whoseTurn = function() {
   };
 };
 
-Game.prototype.takeTurn = function(player, space) {
+Game.prototype.takeTurn = function(player, x, y) {
+  var currentSpace = this.board.spaces[x][y];
+  currentSpace.markBy(player);
+    // if (player.winCondition){  //winCondition is supposed to be called on a board, not a player?
+    //
+    // };
 
-  space.mark_by(player.mark);
-
-
-    if (player.winCondition){  //winCondition is supposed to be called on a board, not a player?
-    };
+  return currentSpace.markedBy;
 };
 
-
-Game.prototype.play = function() {
+Game.prototype.play = function(space) {
   for (this.turnCount = 1; this.turnCount<=9; this.turnCount++) {
-    this.takeTurn(this.whoseTurn);
+    this.takeTurn(this.whoseTurn, space);
   };
 };
 
@@ -114,7 +114,7 @@ Board.prototype.winCondition = function(player) {
 //     // $("#game").click(function() {
 //     //   var ??= game.children()
 //     //   document.getElementById("game#li")
-//     //   player.mark_by(square);
+//     //   player.markBy(square);
 //     // })
 //
 //
