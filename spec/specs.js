@@ -53,14 +53,17 @@ describe('Board', function() {
 
 describe('Game', function() {
   it("initializes a game", function() {
-
     var newGame = new Game();
     var clare = newGame.player1;
     var cory = newGame.player2;
     expect(newGame.player1).to.equal(clare);
     expect(newGame.player2).to.equal(cory);
-    // var myBoard = new Board()
-    // expect(newGame.board).to.eql(myBoard);
+  });
+
+  it("has a board", function() {
+    var newGame = new Game();
+    var myBoard = new Board()
+    expect(newGame.board).to.eql(myBoard);
     // expect(clare.game).to.equal(newGame);
     // expect(newGame.winner).to.equal('none');
   });

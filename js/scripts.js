@@ -84,6 +84,7 @@ var Game = function() {
   var board = new Board();
   this.player1 = new Player("X");
   this.player2 = new Player("O");
+  this.board = new Board();
 }
 
 
