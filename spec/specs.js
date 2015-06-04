@@ -70,16 +70,16 @@ describe('Game', function() {
     expect(newGame.whoseTurn()).to.equal(clare);
   });
 
-  // it("takes a turn", function() {
-  //   var newGame = new Game()
-  //   var clare = newGame.player1;
-  //   var cory = newGame.player2;
-  //   expect(newGame.turnCount).to.equal(1);
-  //   expect(newGame.whoseTurn).to.equal(clare);
-  //   newGame.turnCount++;
-  //   expect(newGame.turnCount).to.equal(2);
-  //   expect(newGame.whoseTurn).to.equal(cory);
-  // });
+  it("takes a turn", function() {
+    var newGame = new Game()
+    var clare = newGame.player1;
+    var cory = newGame.player2;
+    expect(newGame.turnCount).to.equal(1);
+    expect(newGame.whoseTurn()).to.equal(clare);
+    newGame.turnCount++;
+    expect(newGame.turnCount).to.equal(2);
+    expect(newGame.whoseTurn()).to.equal(cory);
+  });
 
 
   // var newGame = new Game()
