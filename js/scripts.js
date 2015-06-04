@@ -24,14 +24,12 @@ Space.prototype.mark_by = function(player) {
 }
 
 var Board = function() {
-  this.width = 3;
-  this.height = 3;
 
   this.spaces = [];
-  var x, y;
-  for (x=1; x <= this.width; x++) {
+
+  for (var x=0; x <= 2; x++) {
     this.spaces[x] = [];
-    for (y=1; y <= this.height; y++) {
+    for (var y=0; y <= 2; y++) {
       this.spaces[x][y] = new Space(x, y);
     }
   }

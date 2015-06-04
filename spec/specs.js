@@ -33,13 +33,9 @@ describe('Space', function() {
 describe('Board', function() {
   it("creates a 3x3 board grid when initialized", function() {
     var testBoard = new Board();
-    expect(testBoard.spaces[1].length).to.equal(4)
+    expect(testBoard.spaces[0][2].coordinates).to.eql([0, 2]);
   });
 
-  it("creates a 3x3 board grid when initialized", function() {
-    var testBoard = new Board();
-    expect(typeof testBoard === 'object').to.equal(true);
-  });
 
   it("determines if player has won", function() {
     var testBoard = new Board();
