@@ -1,17 +1,21 @@
 
-function Player(mark) {
+turnCount = 0; //add var?
+// function Player(mark) {
+
+
+var Player = function(mark) {
   this.mark = mark;
   this.won = false;
 }
 
-function Space(xCoordinate, yCoordinate) {
+var Space = function(xCoordinate, yCoordinate) {
   this.xCoordinate = xCoordinate;
   this.yCoordinate = yCoordinate;
   this.markedBy = false;
 }
 
 Space.prototype.coordinates = function() {
-  return [this.xCoordinate, this.yCoordinate];
+  return [this.xCoordinate, this.yCoordinate]; //can we combine this with the Space consructor?
 }
 
 Space.prototype.mark_by = function(Player) {
@@ -19,7 +23,7 @@ Space.prototype.mark_by = function(Player) {
   return this.markedBy;
 }
 
-function Board() {
+var Board = function() {
   this.width = 3;
   this.height = 3;
 
@@ -46,12 +50,14 @@ Board.prototype.turn = function(player) {
 
   //  player marks something
   //   SPACEID.mark_by(player)
-    if (player.winCondition){
+    if (player.winCondition){  //winCondition is supposed to be called on a board, not a player?
+                                //The player is the parameter of winCondition?
+
       return player.mark + " has won!";
 
     } else {
       console.log("Player O's turn");
-      board.turn(player2);
+      this.turn(player2);
     };
   };
   space.mark_by(player);
@@ -70,15 +76,29 @@ Board.prototype.winCondition = function(player) {
       return player.won = true;
   }
 
-  turnCounter++;
+  turnCount++;
   console.log("End.");
 }
 
-function Game() {
-  turnCount = 1;
+var Game = function() {
   var board = new Board();
   var player1 = new Player("X"), player2 = new Player("O");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //None of this functions yet!
 $(document).ready(function(){
