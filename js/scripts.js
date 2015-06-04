@@ -8,19 +8,19 @@ var Player = function(mark) {
   this.won = false;
 }
 
-var Space = function(xCoordinate, yCoordinate) {
-  this.xCoordinate = xCoordinate;
-  this.yCoordinate = yCoordinate;
+var Space = function(x, y) {
+  this.xCoordinate = x;
+  this.yCoordinate = y;
+  this.coordinates = [x,y]
   this.markedBy = false;
 }
 
-Space.prototype.coordinates = function() {
-  return [this.xCoordinate, this.yCoordinate]; //can we combine this with the Space consructor?
-}
+// Space.prototype.coordinates = function() {
+//   return [this.xCoordinate, this.yCoordinate];
+// }
 
-Space.prototype.mark_by = function(Player) {
-  this.markedBy = Player
-  return this.markedBy;
+Space.prototype.mark_by = function(player) {
+  this.markedBy = player.mark;
 }
 
 var Board = function() {
