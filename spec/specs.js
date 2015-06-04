@@ -37,14 +37,14 @@ describe('Board', function() {
   });
 
 
-  it("determines if player has won", function() {
-    var testBoard = new Board();
-    var testPlayer = new Player("X");
-    testBoard.find(1,1).mark_by(testPlayer);
-    testBoard.find(1,2).mark_by(testPlayer);
-    testBoard.find(1,3).mark_by(testPlayer);
-    expect(testBoard.turn(testPlayer)).to.equal("X wins!");
-  });
+  // it("determines if a player has won", function() { Testing winCondition
+  //   var testBoard = new Board();
+  //   var testPlayer = new Player("X");
+  //   testBoard.find(1,1).mark_by(testPlayer);
+  //   testBoard.find(1,2).mark_by(testPlayer);
+  //   testBoard.find(1,3).mark_by(testPlayer);
+  //   expect(testBoard.turn(testPlayer)).to.equal("X wins!");
+  // });
 });
 
 describe('Game', function() {
@@ -63,6 +63,29 @@ describe('Game', function() {
     // expect(clare.game).to.equal(newGame);
     // expect(newGame.winner).to.equal('none');
   });
+
+  it("returns whoseturn", function() {
+    var newGame = new Game()
+    var clare = newGame.player1;
+    expect(newGame.whoseTurn()).to.equal(clare);
+  });
+
+  // it("takes a turn", function() {
+  //   var newGame = new Game()
+  //   var clare = newGame.player1;
+  //   var cory = newGame.player2;
+  //   expect(newGame.turnCount).to.equal(1);
+  //   expect(newGame.whoseTurn).to.equal(clare);
+  //   newGame.turnCount++;
+  //   expect(newGame.turnCount).to.equal(2);
+  //   expect(newGame.whoseTurn).to.equal(cory);
+  // });
+
+
+  // var newGame = new Game()
+  // var clare = newGame.player1;
+  // var cory = newGame.player2;
+  // newGame.play()
 });
 
 
