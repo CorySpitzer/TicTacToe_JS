@@ -82,7 +82,8 @@ Board.prototype.winCondition = function(player) {
 
 var Game = function() {
   var board = new Board();
-  var player1 = new Player("X"), player2 = new Player("O");
+  this.player1 = new Player("X");
+  this.player2 = new Player("O");
 }
 
 
