@@ -1,6 +1,6 @@
 var Player = function(mark) {
   this.mark = mark;
-  this.won = false;
+  this.hasWon = false;
 };
 
 var Space = function(x, y) {
@@ -14,6 +14,7 @@ var Space = function(x, y) {
 //   return [this.xCoordinate, this.yCoordinate];
 // }
 
+// TODO: change parameter to just the mark string
 Space.prototype.markBy = function(player) {
   this.markedBy = player.mark;
 };
@@ -50,15 +51,7 @@ Game.prototype.whoseTurn = function() {
   };
 };
 
-Game.prototype.takeTurn = function(player, x, y) {
-  var currentSpace = this.board.spaces[x][y];
-  currentSpace.markBy(player);
-    // if (player.winCondition){  //winCondition is supposed to be called on a board, not a player?
-    //
-    // };
 
-  return currentSpace.markedBy;
-};
 
 Game.prototype.play = function(space) {
   for (this.turnCount = 1; this.turnCount<=9; this.turnCount++) {
@@ -66,21 +59,27 @@ Game.prototype.play = function(space) {
   };
 };
 
+Game.prototype.takeTurn = function(player, x, y) {
+  var currentSpace = this.board.spaces[x][y];
+  currentSpace.markBy(player);
+  this.board.winCondition(player);
+
+  return currentSpace.markedBy;
+};
+
 Board.prototype.winCondition = function(player) {
-  if (((this.spaces[1][1].markedBy === player) && (this.spaces[2][1].markedBy === player) && (this.spaces[3][1].markedBy === player))
-    || ((this.spaces[2][1].markedBy === player) && (this.spaces[2][2].markedBy === player) && (this.spaces[3][2].markedBy === player))
-    || ((this.spaces[3][1].markedBy === player) && (this.spaces[3][2].markedBy === player) && (this.spaces[3][3].markedBy === player))
-    || ((this.spaces[1][1].markedBy === player) && (this.spaces[1][2].markedBy === player) && (this.spaces[1][3].markedBy === player))
-    || ((this.spaces[2][1].markedBy === player) && (this.spaces[2][2].markedBy === player) && (this.spaces[2][3].markedBy === player))
-    || ((this.spaces[3][1].markedBy === player) && (this.spaces[3][2].markedBy === player) && (this.spaces[3][3].markedBy === player))
-    || ((this.spaces[1][1].markedBy === player) && (this.spaces[2][2].markedBy === player) && (this.spaces[3][3].markedBy === player))
-    || ((this.spaces[3][1].markedBy === player) && (this.spaces[2][2].markedBy === player) && (this.spaces[1][3].markedBy === player))) {
 
-    player.won = true;
+  if (((this.spaces[0][0].markedBy === player.mark) && (this.spaces[1][0].markedBy === player.mark) && (this.spaces[2][0].markedBy === player.mark))
+    || ((this.spaces[1][0].markedBy === player.mark) && (this.spaces[1][1].markedBy === player.mark) && (this.spaces[2][1].markedBy === player.mark))
+    || ((this.spaces[2][0].markedBy === player.mark) && (this.spaces[2][1].markedBy === player.mark) && (this.spaces[2][2].markedBy === player.mark))
+    || ((this.spaces[0][0].markedBy === player.mark) && (this.spaces[0][1].markedBy === player.mark) && (this.spaces[0][2].markedBy === player.mark))
+    || ((this.spaces[1][0].markedBy === player.mark) && (this.spaces[1][1].markedBy === player.mark) && (this.spaces[1][2].markedBy === player.mark))
+    || ((this.spaces[2][0].markedBy === player.mark) && (this.spaces[2][1].markedBy === player.mark) && (this.spaces[2][2].markedBy === player.mark))
+    || ((this.spaces[0][0].markedBy === player.mark) && (this.spaces[1][1].markedBy === player.mark) && (this.spaces[2][2].markedBy === player.mark))
+    || ((this.spaces[2][0].markedBy === player.mark) && (this.spaces[1][1].markedBy === player.mark) && (this.spaces[0][2].markedBy === player.mark))) {
+
+    player.hasWon = true;
   };
-
-  turnCount++;
-  console.log("End.");
 };
 
 

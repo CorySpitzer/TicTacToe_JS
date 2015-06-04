@@ -81,11 +81,24 @@ describe('Game', function() {
     expect(newGame.whoseTurn()).to.equal(cory);
   });
 
-  it("marks a space in a turn", function() {
+  it("marks a space while taking a turn", function() {
     var newGame = new Game()
     var clare = newGame.player1;
     newGame.takeTurn(clare, 0, 2);
     expect(newGame.board.spaces[0][2].markedBy).to.equal(clare.mark);
+  });
+
+  it("Checks if the current player has won", function() {
+    var newGame = new Game();
+    var clare = newGame.player1;
+    newGame.takeTurn(clare, 0, 0);
+    expect(clare.hasWon).to.equal(false);
+    newGame.takeTurn(clare, 1, 1);
+    newGame.takeTurn(clare, 2, 2);
+    // 
+    // newGame.board.spaces[1][1].markBy(clare);
+    // newGame.board.spaces[2][2].markBy(clare);
+    expect(clare.hasWon).to.equal(true);
   });
 
   // var newGame = new Game()
